@@ -1,6 +1,51 @@
-composer.phar
-/vendor/
+# Archivos del sistema
+.DS_Store
+Thumbs.db
 
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# Logs y cachés
+*.log
+*.cache
+*.tmp
+
+# Archivos de base de datos (PostgreSQL)
+*.pgsql
+*.sql
+*.dump
+
+# Archivos de configuración local
+*.local.php
+*.sqlite
+*.sqlite3
+
+# IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de sesión o subida temporal
+session/
+uploads/
+
+# Directorios comunes de frameworks
+storage/
+bootstrap/cache/
+
+# PHPUnit
+.phpunit.result.cache
+
+# Otros
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
