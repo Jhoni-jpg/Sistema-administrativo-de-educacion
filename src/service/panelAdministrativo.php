@@ -41,7 +41,7 @@ class PanelAdministrativo
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 
-            $values = $stmt->fetchAll();
+            $values = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($values) {
                 return $values;

@@ -5,58 +5,6 @@ $panelAdministrativo = new PanelAdministrativo();
 $var = [];
 $programs = [];
 
-if (!isset($_SESSION['rolUser']) && !$_SESSION['rolUser'] == 'admin') {
-    header('Location: /?view=login');
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-
-    if (!empty($data) && isset($data['listarProgramas']) && strtolower(trim($data['listarProgramas'])) == 'ok') {
-        $programs = $panelAdministrativo->getPrograms();
-
-        if (is_array($programs) && !empty($programs)) {
-            echo json_encode($programs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-            exit;
-        } else {
-            echo json_encode([
-                'estado' => 'error'
-            ]);
-            exit;
-        }
-    }
-
-    if (is_array($data) && isset($data['num'])) {
-        $number = $data['num'];
-
-        if (is_int($number) && !empty($number)) {
-            echo json_encode([
-                'estado' => 'ok',
-                'mensaje' => $number
-            ]);
-            exit;
-        } else {
-            echo json_encode([
-                'estado' => 'error',
-                'mensaje' => 'Ha ocurrido un error inesperado en la comunicacion'
-            ]);
-            exit;
-        }
-    }
-
-    if (isset($_POST['programName']) && !empty($_POST['programName'])) {
-        $agregadoCorrectamente = $panelAdministrativo->addPrograms(strtolower(trim($_POST['programName'])));
-        header("Location: /?view=panelAdministrativo&added=1");
-        exit;
-    }
-
-    if (isset($_POST['dropProgram'])) {
-        $programaEliminado = $panelAdministrativo->dropProgram($_POST['id_program']);
-        header("Location: /?view=panelAdministrativo&delete=1");
-        exit;
-    }
-}
 ?>
 
 <section class="container h-100">

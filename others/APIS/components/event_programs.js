@@ -7,9 +7,9 @@ export function initEvent_programs() {
 
       button.addEventListener("click", async () => {
         if (!buttonPressed) {
-          await fetch("/views/panelAdministrativo.php", {
+          await fetch("auth/estudiantes", {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ listarProgramas: "ok" }),
           })
             .then((res) => {

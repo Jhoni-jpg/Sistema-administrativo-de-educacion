@@ -66,4 +66,3 @@ CREATE TABLE IF NOT EXISTS fichas (
 
     CONSTRAINT fkId_programa FOREIGN KEY (id_programa) REFERENCES programas(id)
 );
-
